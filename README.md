@@ -5,3 +5,5 @@
 # Trabajos Semana 1
 - [Introduccion R](https://github.com/katherineggs/dataWrangling/tree/main/introduccionR)
 - [Script R variables](https://github.com/katherineggs/dataWrangling/blob/main/introduccionR/Variables.R)
+
+# Trabajos Semana 2

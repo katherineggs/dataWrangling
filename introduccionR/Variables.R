@@ -70,7 +70,7 @@ View(df) # para visualizar
 dfCopy <- data.frame(
   c1 = c("this", "is", "a", "vector", "of", "things"),
   c2 = 1:6,
-  c3 = letters[1:6],
+  c3 = letters[1:6]
 )
 
 str(df)
@@ -84,5 +84,21 @@ head(df, 3)
 tail(df, 1)
 nrow(df)
 ncol(df)
+
+# ADD new columns
+df$`Columna 1` # $ para accesar a lo que haya en df
+df$`Columna 4` <- 11:16 # 11:16 n. de 11 a 16 & debe tener la misma cantidad de filas que el original
+
+df[,4] # [fila, columna]
+
+# ADD new rows
+new_elements <- c("new", 7, "g", 17) #creamos un vector
+rbind(df, new_elements) # agrega la columna y mantiene los tipos de datos
+
+dfCopy$c1 <- factor(dfCopy$c1) #cambiar tipo de dato
+rbind(dfCopy, c("new", 7, "g"))
+
+
+
 
 
