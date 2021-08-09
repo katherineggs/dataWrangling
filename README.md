@@ -7,3 +7,4 @@
 - [Script R variables](https://github.com/katherineggs/dataWrangling/blob/main/introduccionR/Variables.R)
 
 # Trabajos Semana 2
+- [Archivos](https://github.com/katherineggs/dataWrangling/tree/main/Semana2)
