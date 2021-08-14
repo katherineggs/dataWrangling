@@ -170,13 +170,71 @@ pre code {
 
 <div id="utilizando-la-función-lapply-encuentre-la-moda-de-cada-vector-de-una-lista-de-por-lo-menos-3-vectores." class="section level4">
 <h4>Utilizando la función lapply, encuentre la moda de cada vector de una lista de por lo menos 3 vectores.</h4>
-<pre class="r"><code>moda &lt;- function(lista){
-  moda = 1
-  return(moda)
-} 
+<div id="hice-dos-maneras-porque-no-entendí-como-debería-ser" class="section level5">
+<h5>*** Hice dos maneras porque no entendí como debería ser ***</h5>
+</div>
+</div>
+<div id="prueba-1" class="section level1">
+<h1>Prueba 1</h1>
+<div id="lista-de-vectores" class="section level2">
+<h2>Lista de Vectores</h2>
+<pre class="r"><code>listt &lt;- function(s){
+  x = sample(1:200, size = s)
+  y = sample(1:200, size = s)
+  z = sample(1:200, size = s)
+  
+  lista &lt;- list(x,y,z)
+  return(lista)
+} </code></pre>
+</div>
+<div id="creamos-la-lista" class="section level2">
+<h2>Creamos la lista</h2>
+<pre class="r"><code>lista &lt;- listt(10)</code></pre>
+</div>
+<div id="obtenemos-la-moda-de-cada-vector-de-la-lista" class="section level2">
+<h2>Obtenemos la moda de cada vector de la lista</h2>
+<pre class="r"><code>lapply(lista, mean)</code></pre>
+<pre><code>## [[1]]
+## [1] 95.9
+## 
+## [[2]]
+## [1] 110.9
+## 
+## [[3]]
+## [1] 86.2</code></pre>
+</div>
+</div>
+<div id="prueba-2" class="section level1">
+<h1>Prueba 2</h1>
+<div id="df-de-vectores" class="section level2">
+<h2>DF de vectores</h2>
+<pre class="r"><code>dfAsList &lt;- function(s){
+  
+  listDF &lt;- data.frame(
+    x = sample(1:200, size = s),
+    y = sample(1:200, size = s),
+    z = sample(1:200, size = s)
 
-moda()</code></pre>
-<pre><code>## [1] 1</code></pre>
+  )
+  return(listDF)
+} </code></pre>
+</div>
+<div id="creamos-el-df" class="section level2">
+<h2>Creamos el DF</h2>
+<pre class="r"><code>listDf &lt;- dfAsList(10)</code></pre>
+</div>
+<div id="obtenemos-la-moda-de-cada-vector" class="section level2">
+<h2>Obtenemos la moda de cada vector</h2>
+<pre class="r"><code>lapply(listDf, mean)</code></pre>
+<pre><code>## $x
+## [1] 99.8
+## 
+## $y
+## [1] 135.5
+## 
+## $z
+## [1] 105.2</code></pre>
+</div>
 </div>
 
 

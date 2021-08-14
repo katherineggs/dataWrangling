@@ -5,8 +5,13 @@ output: html_document
 
 #### Utilizando la función lapply, encuentre la moda de cada vector de una lista de por lo menos 3 vectores.
 
+##### *** Hice dos maneras porque no entendí como debería ser ***
+
+# Prueba 1
+
+## Lista de Vectores
 ```{r funcion lista}
-lista <- function(s){
+listt <- function(s){
   x = sample(1:200, size = s)
   y = sample(1:200, size = s)
   z = sample(1:200, size = s)
@@ -14,17 +19,52 @@ lista <- function(s){
   lista <- list(x,y,z)
   return(lista)
 } 
-```
-
-```{r funcion moda}
-
 
 ```
 
-
-
-
+## Creamos la lista
 ```{r}
-lista(10)
+lista <- listt(10)
 ```
+
+## Obtenemos la moda de cada vector de la lista
+```{r lapply}
+lapply(lista, mean)
+```
+
+# Prueba 2
+
+## DF de vectores
+```{r funcion DF}
+dfAsList <- function(s){
+  
+  listDF <- data.frame(
+    x = sample(1:200, size = s),
+    y = sample(1:200, size = s),
+    z = sample(1:200, size = s)
+
+  )
+  return(listDF)
+} 
+
+```
+
+## Creamos el DF
+```{r}
+listDf <- dfAsList(10)
+```
+
+## Obtenemos la moda de cada vector 
+```{r lapply DF}
+lapply(listDf, mean)
+```
+
+
+
+
+
+
+
+
+
 
