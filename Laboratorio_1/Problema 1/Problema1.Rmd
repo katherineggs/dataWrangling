@@ -1,6 +1,6 @@
 ---
 title: "Laboratorio 1"
-output: github_document
+output: html_document
 ---
 
 ## Problema 1

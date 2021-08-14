@@ -5,12 +5,26 @@ output: html_document
 
 #### Utilizando la función lapply, encuentre la moda de cada vector de una lista de por lo menos 3 vectores.
 
-```{r funcion moda}
-moda <- function(lista){
-  moda = 1
-  return(moda)
+```{r funcion lista}
+lista <- function(s){
+  x = sample(1:200, size = s)
+  y = sample(1:200, size = s)
+  z = sample(1:200, size = s)
+  
+  lista <- list(x,y,z)
+  return(lista)
 } 
+```
 
-moda()
+```{r funcion moda}
+
+
+```
+
+
+
+
+```{r}
+lista(10)
 ```
 
