@@ -9,7 +9,7 @@
 # Trabajos Semana 2
 - [Archivos](https://github.com/katherineggs/dataWrangling/tree/main/Semana2)
 
-#Laboratorio 1
+# Laboratorio 1
 - [Problema 1](https://github.com/katherineggs/dataWrangling/tree/main/Laboratorio_1/Problema%201)
 - [Problema 2](https://github.com/katherineggs/dataWrangling/tree/main/Laboratorio_1/Problema%202)
 - [Problema 3](https://github.com/katherineggs/dataWrangling/tree/main/Laboratorio_1/Problema%203)
