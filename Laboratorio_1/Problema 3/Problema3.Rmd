@@ -1,0 +1,24 @@
+---
+title: "Problema 3"
+output: html_document
+---
+
+#### 1. Descargue el archivo de Parque Vehicular de Enero 2019.
+#### 2. Leer el archivo en R. (Nota: usar read_delim() del paquete readr)
+
+```{r librerias, include=FALSE}
+library(readr)
+```
+
+```{r leer archivo, include=FALSE}
+textFile <- "INE_PARQUE_VEHICULAR_080219.txt"
+
+vehiculos <- read_delim(textFile, delim = "|")
+parque <- data.frame(vehiculos)
+```
+
+```{r}
+parque
+```
+
+

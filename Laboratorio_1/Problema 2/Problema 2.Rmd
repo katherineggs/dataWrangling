@@ -1,0 +1,16 @@
+---
+title: "Problema 2"
+output: html_document
+---
+
+#### Utilizando la función lapply, encuentre la moda de cada vector de una lista de por lo menos 3 vectores.
+
+```{r funcion moda}
+moda <- function(lista){
+  moda = 1
+  return(moda)
+} 
+
+moda()
+```
+
