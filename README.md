@@ -13,3 +13,7 @@
 - [Problema 1](https://github.com/katherineggs/dataWrangling/tree/main/Laboratorio_1/Problema%201)
 - [Problema 2](https://github.com/katherineggs/dataWrangling/tree/main/Laboratorio_1/Problema%202)
 - [Problema 3](https://github.com/katherineggs/dataWrangling/tree/main/Laboratorio_1/Problema%203)
+
+# Laboratorio 2
+- [Documento con ss]()
+- [Py Notebook]()
