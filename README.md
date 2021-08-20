@@ -15,5 +15,5 @@
 - [Problema 3](https://github.com/katherineggs/dataWrangling/tree/main/Laboratorio_1/Problema%203)
 
 # Laboratorio 2
-- [Documento con ss]()
-- [Py Notebook]()
+- [Py Notebook](https://github.com/katherineggs/dataWrangling/blob/main/Laboratorio2/SQL%20lab2.ipynb)
+- [Documento con ss](https://github.com/katherineggs/dataWrangling/blob/main/Laboratorio2/PreguntasLaboratorio2SQLBasics.docx)
