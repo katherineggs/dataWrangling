@@ -17,3 +17,9 @@
 # Laboratorio 2
 - [Py Notebook](https://github.com/katherineggs/dataWrangling/blob/main/Laboratorio2/SQL%20lab2.ipynb)
 - [Documento con ss](https://github.com/katherineggs/dataWrangling/blob/main/Laboratorio2/PreguntasLaboratorio2SQLBasics.docx)
+
+# Laboratorio 3
+- [Crimen .pynb](https://github.com/katherineggs/dataWrangling/blob/main/Laboratorio3/CrimeSolving.ipynb)
+- [SQL .pynb](https://github.com/katherineggs/dataWrangling/blob/main/Semana3_Joins_Subqueries/SQL_Students.ipynb)
+- [Documento con SS](https://github.com/katherineggs/dataWrangling/blob/main/Laboratorio3/Laboratorio_3.docx)
+
