@@ -2,12 +2,20 @@
 ### Katherine Garcia 20190418
 ### Semestre 2, 2021
 
-# Trabajos Semana 1
+# Trabajos Semana 1 R
 - [Introduccion R](https://github.com/katherineggs/dataWrangling/tree/main/introduccionR)
 - [Script R variables](https://github.com/katherineggs/dataWrangling/blob/main/introduccionR/Variables.R)
 
-# Trabajos Semana 2
+# Trabajos Semana 2 R
 - [Archivos](https://github.com/katherineggs/dataWrangling/tree/main/Semana2)
+
+# Trabajos Semana 3 Python
+- [Archivos](https://github.com/katherineggs/dataWrangling/tree/main/Semana3_Joins_Subqueries)
+
+# Trabajos Semana 4 R
+-[Archivos]()
+
+---------------------------------
 
 # Laboratorio 1
 - [Problema 1](https://github.com/katherineggs/dataWrangling/tree/main/Laboratorio_1/Problema%201)
