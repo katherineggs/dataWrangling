@@ -32,3 +32,5 @@
 - [Documento con SS](https://github.com/katherineggs/dataWrangling/blob/main/Laboratorio3/Laboratorio_3.docx)
 
 ## Laboratorio 4
+- [Reporte Escrito](https://github.com/katherineggs/dataWrangling/blob/main/Laboratorio4/Laboratorio_4.docx)
+- [R script](https://github.com/katherineggs/dataWrangling/blob/main/Laboratorio4/lab4.R)

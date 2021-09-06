@@ -1,5 +1,7 @@
 library(readr)
 library(dplyr)
+library(highcharter)
+
 
 data <- read.csv("tabla_completa.csv")
 
@@ -104,6 +106,26 @@ data %>%
   arrange(desc(ingresos)) %>%
   View()
 
+# HIGH CHARTER --------------------------------------------------------------------
+data <- mutate_if(data, is.character, as.factor)
+data$CLIENTE <- iconv(data$CLIENTE, to="UTF-8")
+
+# 
+data %>%
+  select(CLIENTE, Q) %>%
+  group_by(CLIENTE) %>%
+  summarise(ingresos = sum(Q)) %>%
+  hchart("column", hcaes(x = CLIENTE, y = ingresos)) %>%
+  hc_title(text="<b>CLIENTES</b>") %>%
+  hc_subtitle(text="<i> El Pinche, Taqueria El Chinito, El Gallo Negro, Pollo Pinulito y Ubiquo Labs. Forman el 40% de clientes los cuales representan el 60% de los ingresos de la empresa. </i>")
+
+data %>%
+  select(PILOTO, COD_VIAJE) %>%
+  group_by(PILOTO) %>%
+  summarise(viajes = n_distinct(COD_VIAJE)) %>%
+  hchart("column", hcaes(x = PILOTO, y = viajes)) %>%
+  hc_title(text="<b>VIAJES POR PILOTO</b>") %>%
+  hc_subtitle(text="<i> El mejor puesto como mejor piloto se otorga a Fernando Mariano Berreiro que es el piloto con más viajes en el año y con mayor cantidad de ingresos por dichos viajes.  </i>")
 
 
 
