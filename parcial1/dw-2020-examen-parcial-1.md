@@ -1,30 +1,9 @@
 dw-2020-parcial-1
 ================
-KAtherine Garcia - 20190418
+Katherine Garcia - 20190418
 9/3/2020
 
 # Examen parcial
-
-Indicaciones generales:
-
--   Usted tiene el período de la clase para resolver el examen parcial.
-
--   La entrega del parcial, al igual que las tareas, es por medio de su
-    cuenta de github, pegando el link en el portal de MiU.
-
--   Pueden hacer uso del material del curso e internet (stackoverflow,
-    etc.). Sin embargo, si encontramos algún indicio de copia, se
-    anulará el exámen para los estudiantes involucrados. Por lo tanto,
-    aconsejamos no compartir las agregaciones que generen.
-
-## Sección I: Preguntas teóricas.
-
--   Existen 10 preguntas directas en este Rmarkdown, de las cuales usted
-    deberá responder 5. Las 5 a responder estarán determinadas por un
-    muestreo aleatorio basado en su número de carné.
-
--   Ingrese su número de carné en `set.seed()` y corra el chunk de R
-    para determinar cuáles preguntas debe responder.
 
 ``` r
 set.seed(20190418) 
@@ -82,15 +61,7 @@ factor1 = factor(datos)
 factor2 <- append(factor1, 22) 
 # Lo que se debe hacer 
 levels(factor1) <- append(levels(factor1), 22) 
-```
 
-``` r
-print("FACTOR INICIAL")
-```
-
-    ## [1] "FACTOR INICIAL"
-
-``` r
 factor1
 ```
 
@@ -98,22 +69,10 @@ factor1
     ## Levels: comida congelados fruta verdura 22
 
 ``` r
-print("NO HACER")
-```
-
-    ## [1] "NO HACER"
-
-``` r
 factor2
 ```
 
     ## [1]  3  4  1  2 22
-
-``` r
-print("HACER")
-```
-
-    ## [1] "HACER"
 
 ``` r
 factor1
@@ -137,16 +96,14 @@ HAVING COUNT(salario)
 -   Extra: ¿Cuántos posibles exámenes de 5 preguntas se pueden realizar
     utilizando como banco las diez acá presentadas?
 
--   
+-   252 exámenes diferentes
 
 ``` r
 N <- 10  
 n <- 5 
-
 examenes <- c(1:N)
-
-permutaciones <- combinations(N, n, examenes)
-nrow(permutaciones)
+combinaciones <- combinations(N, n, examenes)
+nrow(combinaciones)
 ```
 
     ## [1] 252
