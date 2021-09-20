@@ -2,8 +2,14 @@
 ### Katherine Garcia 20190418
 ### Semestre 2, 2021
 
+<div align="center">
+  <h4>
+    <a href="#Parcial 1">Parcial 1</a>
+  </h4>
+</div>
+
 ## Parcial 1
-- [Archivos del Examen]()
+- [Archivos del Examen](https://github.com/katherineggs/dataWrangling/tree/main/parcial1)
 
 ---------------------------
 
