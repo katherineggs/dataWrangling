@@ -123,6 +123,7 @@ data %>%
   select(PILOTO, COD_VIAJE) %>%
   group_by(PILOTO) %>%
   summarise(viajes = n_distinct(COD_VIAJE)) %>%
+  arrange(desc(viajes)) %>%
   hchart("column", hcaes(x = PILOTO, y = viajes)) %>%
   hc_title(text="<b>VIAJES POR PILOTO</b>") %>%
   hc_subtitle(text="<i> El mejor puesto como mejor piloto se otorga a Fernando Mariano Berreiro que es el piloto con más viajes en el año y con mayor cantidad de ingresos por dichos viajes.  </i>")
