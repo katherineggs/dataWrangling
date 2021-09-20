@@ -4,7 +4,9 @@
 
 <div align="center">
   <h4>
-    <a href="#Parcial 1">Parcial 1</a>
+    <a href="#parcial-1">Parcial 1</a> |
+    <a href="#semana-1---intro---r">Trabajos Semanales 1</a> |
+    <a href="#laboratorio-1">Laboratorios</a> |
   </h4>
 </div>
 
