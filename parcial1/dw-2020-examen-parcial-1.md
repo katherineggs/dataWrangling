@@ -72,7 +72,55 @@ lista <- list("Hola", 1010, "Green", 12.2)
 7.  ¿Qué pasa si quiero agregar una nueva categoría a un factor que no
     se encuentra en los niveles existentes?
 
--   
+-   Este nuevo elemento afecta todo el factor y deshace todo lo que se
+    hizo anteriormente en el factor
+
+``` r
+datos = c("fruta", "verdura", "comida", "congelados")
+factor1 = factor(datos)
+# Lo que no se debe hacer
+factor2 <- append(factor1, 22) 
+# Lo que se debe hacer 
+levels(factor1) <- append(levels(factor1), 22) 
+```
+
+``` r
+print("FACTOR INICIAL")
+```
+
+    ## [1] "FACTOR INICIAL"
+
+``` r
+factor1
+```
+
+    ## [1] fruta      verdura    comida     congelados
+    ## Levels: comida congelados fruta verdura 22
+
+``` r
+print("NO HACER")
+```
+
+    ## [1] "NO HACER"
+
+``` r
+factor2
+```
+
+    ## [1]  3  4  1  2 22
+
+``` r
+print("HACER")
+```
+
+    ## [1] "HACER"
+
+``` r
+factor1
+```
+
+    ## [1] fruta      verdura    comida     congelados
+    ## Levels: comida congelados fruta verdura 22
 
 9.  En SQL, ¿para qué utilizamos el keyword `HAVING`?
 
@@ -91,19 +139,28 @@ HAVING COUNT(salario)
 
 -   
 
-## Sección II Preguntas prácticas.
-
 ``` r
-parcial_anonimo <- readRDS("parcial_anonimo.rds", refhook = NULL)
+N <- 10  
+n <- 5 
+
+examenes <- c(1:N)
+
+permutaciones <- combinations(N, n, examenes)
+nrow(permutaciones)
 ```
+
+    ## [1] 252
+
+## Sección II Preguntas prácticas.
 
 ## A
 
 A. De los clientes que están en más de un país, ¿cuál cree que es el más
 rentable y por qué?
 
--   El cliente mas rentable es el cliente `a17a7558`. Ya que presenta la
-    mayor cantidad de Ventas y una pequeña cantidad de ventas negativas.
+-   El cliente mas rentable es el cliente `a17a7558`. Esto es debido a
+    este cliente presenta la mayor cantidad de Ventas y una pequeña
+    cantidad de ventas negativas.
 
 Mejores en ventas 1. a17a7558 2. ff122c3f 3. c53868a0
 
@@ -145,9 +202,9 @@ parcial_anonimo %>%
     ## 3 c53868a0     -22.4     2
     ## 4 ff122c3f    -695.      2
 
-### Observaciones
+### Observaciones A
 
-Tengo solo 2 paises y 2147 clientes diferentes 7 clientes estan en los
+Tengo solo 2 paises y 2147 clientes diferentes. 7 clientes estan en los
 dos paises
 
 ## B
@@ -156,10 +213,51 @@ B. Estrategia de negocio ha decidido que ya no operará en aquellos
 territorios cuyas pérdidas sean “considerables”. Bajo su criterio,
 ¿cuáles son estos territorios y por qué ya no debemos operar ahí?
 
+-   Se considera una pérdida considerable si se encuentra en el 75 a
+    100% de ventas negativas por territorio. Siendo esta cantidad
+    `-748.585`, los principales territorios que quedan para evaluación
+    sobre si operar ahí o no son:
+
+1.  f7dfc635
+2.  77192d63
+3.  72520ba2
+
 ``` r
-# parcial_anonimo %>%
-#   select(Territorio,Venta) %>%
-#   group_by(Territorio) %>%
-#   summarise(n()) %>%
-#   View()
+parcial_anonimo %>%
+  select(Territorio,Venta) %>%
+  group_by(Territorio) %>%
+  filter(Venta<0) %>%
+  summarise(ventas = sum(Venta)) %>%
+  filter(ventas < -748.585) %>%
+  arrange(desc(ventas))
 ```
+
+    ## # A tibble: 20 × 2
+    ##    Territorio  ventas
+    ##    <chr>        <dbl>
+    ##  1 4ca9988b     -758.
+    ##  2 23e9d55d     -765.
+    ##  3 7a861731     -792.
+    ##  4 b97335a1    -1139.
+    ##  5 0c169a3b    -1171.
+    ##  6 c57e6d42    -1185.
+    ##  7 a9e783db    -1189.
+    ##  8 fed6647d    -1433.
+    ##  9 b50e91fb    -1523.
+    ## 10 75298f79    -1568.
+    ## 11 a0d39798    -1779.
+    ## 12 8f79b7f8    -1858.
+    ## 13 67e9cc18    -2721.
+    ## 14 2e812869    -3056.
+    ## 15 bc8e06ed    -3269.
+    ## 16 1d407777    -3300.
+    ## 17 69c1b705    -3370.
+    ## 18 72520ba2    -3761.
+    ## 19 77192d63    -5641.
+    ## 20 f7dfc635   -14985.
+
+### Observaciones B
+
+Hay 104 territorios distintos. Hubo un total de ventas negativas de
+-67966.3 . El promedio de ventas negativas por territorio es -653.52 .
+El cuartil del 75% es de -748.585

@@ -176,24 +176,20 @@ parcial_anonimo %>%
   filter(Venta<0) %>%
   summarise(ventas = sum(Venta)) %>%
   filter(ventas < -748.585) %>%
-  # summarise(q = quantile(ventas)) %>%
-  arrange(desc(ventas))%>%
-  View()
+  arrange(desc(ventas))
 ```
 
 ```{r sumVentas, include=FALSE}
 parcial_anonimo %>%
   select(Territorio,Venta) %>%
   filter(Venta<0) %>%
-  summarise(ventas = sum(Venta)) %>%
-  View()
+  summarise(ventas = sum(Venta)) 
 ```
 
 ```{r qTerritorios, include=FALSE}
 parcial_anonimo %>%
   select(Territorio,Venta) %>%
-  summarise(ts = n_distinct(Territorio)) %>%
-  View()
+  summarise(ts = n_distinct(Territorio)) 
 ```
 ### Observaciones B
 
