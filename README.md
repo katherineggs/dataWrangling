@@ -16,8 +16,8 @@
 ---------------------------
 
 ## Semana 1 - Intro - R
-- [Introduccion R](https://github.com/katherineggs/dataWrangling/tree/main/introduccionR)
-- [Script R variables](https://github.com/katherineggs/dataWrangling/blob/main/introduccionR/Variables.R)
+- [Introduccion R](https://github.com/katherineggs/dataWrangling/tree/main/Laboratorio1)
+- [Script R variables](https://github.com/katherineggs/dataWrangling/blob/main/Laboratorio1/Variables.R)
 
 ## Semana 2 - leer archivos - R
 - [Archivos](https://github.com/katherineggs/dataWrangling/tree/main/Semana2)
@@ -28,12 +28,15 @@
 ## Semana 4 - Spotify - R
 - [Archivos](https://github.com/katherineggs/dataWrangling/tree/main/semana4)
 
+## Semana 5 - Fechas - R
+- [Archivos](https://github.com/katherineggs/dataWrangling/tree/main/Semana5fechas)
+
 ---------------------------------
 
 ## Laboratorio 1
-- [Problema 1](https://github.com/katherineggs/dataWrangling/tree/main/Laboratorio_1/Problema%201)
-- [Problema 2](https://github.com/katherineggs/dataWrangling/tree/main/Laboratorio_1/Problema%202)
-- [Problema 3](https://github.com/katherineggs/dataWrangling/tree/main/Laboratorio_1/Problema%203)
+- [Problema 1](https://github.com/katherineggs/dataWrangling/tree/main/Laboratorio1/Problema%201)
+- [Problema 2](https://github.com/katherineggs/dataWrangling/tree/main/Laboratorio1/Problema%202)
+- [Problema 3](https://github.com/katherineggs/dataWrangling/tree/main/Laboratorio1/Problema%203)
 
 ## Laboratorio 2
 - [Py Notebook](https://github.com/katherineggs/dataWrangling/blob/main/Laboratorio2/SQL%20lab2.ipynb)
