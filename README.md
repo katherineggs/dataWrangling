@@ -26,7 +26,7 @@
 - [Archivos](https://github.com/katherineggs/dataWrangling/tree/main/Semana3_Joins_Subqueries)
 
 ## Semana 4 - Spotify - R
-- [Archivos](https://github.com/katherineggs/dataWrangling/tree/main/semana4)
+- [Archivos](https://github.com/katherineggs/dataWrangling/tree/main/Semana4Spotify)
 
 ## Semana 5 - Fechas - R
 - [Archivos](https://github.com/katherineggs/dataWrangling/tree/main/Semana5fechas)
