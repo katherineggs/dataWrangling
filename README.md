@@ -50,3 +50,7 @@
 ## Laboratorio 4
 - [Reporte Escrito](https://github.com/katherineggs/dataWrangling/blob/main/Laboratorio4/Laboratorio_4.docx)
 - [R script](https://github.com/katherineggs/dataWrangling/blob/main/Laboratorio4/lab4.R)
+
+## Laboratorio 5
+- [Rmarkdown](https://github.com/katherineggs/dataWrangling/blob/main/Laboratorio5/Laboratorio5.md)
+- [Archivos](https://github.com/katherineggs/dataWrangling/tree/main/Laboratorio5)
