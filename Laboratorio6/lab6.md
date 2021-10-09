@@ -61,13 +61,13 @@ encuentraPalabras
 # 6. números telefónicos de Guatemala
 
 ``` r
-telefonos <- "^(+?(502)(' '|-))?(2|4|5|6){1}[0-9]{7}$"
+telefonos <- "^(\\+?(502)( |-))?(2|4|5|6){1}[0-9]{7}$"
 ejemplo <- c("+502-21234567", "502 45678901", "+502 51234567", "21234567", "41234567", "51234567", "61234567")
 validarNums <- grep(telefonos, ejemplo)
 validarNums
 ```
 
-    ## [1] 4 5 6 7
+    ## [1] 1 2 3 4 5 6 7
 
 \#7. Correos UFM
 
