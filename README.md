@@ -54,3 +54,7 @@
 ## Laboratorio 5
 - [Rmarkdown](https://github.com/katherineggs/dataWrangling/blob/main/Laboratorio5/Laboratorio5.md)
 - [Archivos](https://github.com/katherineggs/dataWrangling/tree/main/Laboratorio5)
+
+## Laboratorio 6
+- [Rmarkdown](https://github.com/katherineggs/dataWrangling/blob/main/Laboratorio6/lab6.md)
+- [regEx](https://github.com/katherineggs/dataWrangling/blob/main/Laboratorio6/regEx.R)
