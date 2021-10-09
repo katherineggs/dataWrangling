@@ -1,0 +1,18 @@
+---
+title: "Laboratorio 7"
+author: "Katherine Garcia - 20190418"
+output: rmarkdown::github_document
+---
+
+# Información obtenida
+- Utilidad superior a US$1 Millón. - 2017
+- Han tenido una baja del 25% con respecto al año anterior. Septiembre 2018
+- Estudio del mercado, para que el siguiente año la empresa pueda crecer el 10% con respecto al 2018. - 2019
+- Entender cómo funcionó el 2017.
+
+
+
+
+
+
+
