@@ -4,15 +4,143 @@ author: "Katherine Garcia - 20190418"
 output: rmarkdown::github_document
 ---
 
+```{r librerias, include=FALSE}
+library(dplyr)
+library(lubridate)
+```
+
+
 # Información obtenida
 - Utilidad superior a US$1 Millón. - 2017
 - Han tenido una baja del 25% con respecto al año anterior. Septiembre 2018
 - Estudio del mercado, para que el siguiente año la empresa pueda crecer el 10% con respecto al 2018. - 2019
 - Entender cómo funcionó el 2017.
 
+```{r inicio, include=FALSE}
+# leer csv
+data <- read.csv("c1.csv")
 
+# ajustes
+data <- data %>%
+  mutate(factura = gsub("^ Q-   ", "",factura)) %>% mutate(factura = gsub("^ Q", "",factura)) %>%
+  
+  mutate(Camion_5 = gsub("^ Q-   ", "",Camion_5)) %>% mutate(Camion_5 = gsub("^ Q", "",Camion_5)) %>%
+  mutate(fijoCamion_5 = gsub("^ Q-   ", "",fijoCamion_5)) %>% mutate(fijoCamion_5 = gsub("^ Q", "",fijoCamion_5)) %>%
+  mutate(directoCamion_5 = gsub("^ Q-   ", "",directoCamion_5)) %>% mutate(directoCamion_5 = gsub("^ Q", "",directoCamion_5)) %>%
+  mutate(Pickup = gsub("^ Q-   ", "",Pickup)) %>% mutate(Pickup = gsub("^ Q", "",Pickup)) %>%
+  mutate(fijoPickup = gsub("^ Q-   ", "",fijoPickup)) %>% mutate(fijoPickup = gsub("^ Q", "",fijoPickup)) %>%
+  mutate(directoPickup = gsub("^ Q-   ", "",directoPickup)) %>% mutate(directoPickup = gsub("^ Q", "",directoPickup)) %>%
+  mutate(Moto = gsub("^ Q-   ", "",Moto)) %>% mutate(Moto = gsub("^ Q", "",Moto)) %>%
+  mutate(fijoMoto = gsub("^ Q-   ", "",fijoMoto)) %>% mutate(fijoMoto = gsub("^ Q", "",fijoMoto)) %>%
+  mutate(directoMoto = gsub("^ Q-   ", "",directoMoto)) %>% mutate(directoMoto = gsub("^ Q", "",directoMoto)) %>%
+  
+  mutate(Camion_5 = as.integer(Camion_5)) %>% mutate(Pickup = as.numeric(Pickup)) %>% mutate(Moto = as.numeric(Moto)) %>%
+  mutate(fijoCamion_5 = as.numeric(fijoCamion_5)) %>% mutate(fijoPickup = as.numeric(fijoPickup)) %>%
+  mutate(fijoMoto = as.numeric(fijoMoto)) %>%
+  
+  mutate(directoCamion_5 = as.numeric(directoCamion_5)) %>%
+  mutate(directoPickup = as.numeric(directoPickup)) %>%
+  mutate(directoMoto = as.numeric(directoMoto)) %>%
+  mutate(factura = as.integer(factura)) %>%
+  
+  mutate(Fecha = sub("(.{6})(.*)", "\\120\\2", Fecha)) %>%
+  mutate(Fecha = as_date(Fecha, format = "%d-%m-%Y")) %>%
+  
+  replace(is.na(.), 0) %>%
+  mutate(tipoVehiculo = ifelse((Camion_5 != 0),"Camion",
+                               ifelse((Pickup != 0),"Pickup",
+                                      ifelse((Moto != 0),"Moto","")))) %>%
+  mutate(distancia = ifelse(X5.30 == " x ", "5-30",
+                            ifelse(X30.45 == " x ", "30-45",
+                                   ifelse(X45.75 == " x ", "45-75",
+                                          ifelse(X75.120 == " x ", "75-120",
+                                                 ifelse(X120. == " x ", "120+", ""))))))
 
+data$X <- NULL
+data$X.1 <- NULL
+data$X.2 <- NULL
+data$X.3 <- NULL
+data$X.4 <- NULL
+data$X.5 <- NULL  
+```
 
+## Existen 4 tiendas que cubren los 10 servicios que ofrecen
+```{r centros}
+data %>%
+  select(Cod,origen) %>%
+  group_by(tiendaNo. =origen) %>%
+  summarise(cantServicios = n_distinct(Cod))
+```
 
+## Estado de Resultados - 2017 en Quetzales
+```{r 2017ER}
+data %>%
+  select(factura, fijoPickup, fijoCamion_5, fijoMoto, directoPickup, directoCamion_5, directoMoto) %>%
+  summarise(ventas = sum(factura), ctV = sum(fijoCamion_5) + sum(fijoPickup) + sum(fijoMoto)
+            + sum(directoCamion_5) + sum(directoPickup) + sum(directoMoto)) %>%
+  summarise(Utilidad = ventas - ctV) # EN QUETZALES
+```
 
+## Como fue el 2018 en Quetzales
+```{r 2018ER}
+data %>%
+  select(Fecha, factura, fijoPickup, fijoCamion_5, fijoMoto, directoPickup, directoCamion_5, directoMoto) %>%
+  filter(month(Fecha) <= 9) %>%
+  summarise(ventas = sum(factura) * 0.75, ctV = (sum(fijoCamion_5) + sum(fijoPickup) + sum(fijoMoto)
+            + sum(directoCamion_5) + sum(directoPickup) + sum(directoMoto)) *0.97) %>%
+  summarise(Utilidad = ventas - ctV) # EN QUETZALES
+```
 
+## Tarifario por servicio
+```{r precio}
+ data %>%
+  select(tipoVehiculo, factura, Cod) %>%
+  group_by(Servicio = Cod) %>%
+  summarise(servicios = sum(factura), cant = n()) %>%
+  summarise(precioUnidad = servicios/cant, Servicio) 
+```
+
+## ¿Cuándo podríamos perderle a un mantenimiento y/o reparación? 
+```{r perdidas}
+data %>%
+  select(Camion_5, Moto, Pickup, factura, Cod) %>%
+  group_by(Servicio = Cod) %>%
+  mutate(costo = ifelse(Camion_5 != 0, Camion_5, ifelse(Pickup != 0, Pickup, ifelse(Moto != 0, Moto, 0)))) %>%
+  summarise(costoMax = max(costo), factMin = min((factura)), factMax = max(factura)) %>%
+  summarise(Servicio, Perdida = (factMin - costoMax))
+```
+
+## Abrir más centros?
+```{r}
+data %>%
+  select(distancia) %>%
+  group_by(distancia) %>%
+  summarise(cantViajes = n()) %>%
+  arrange(desc(cantViajes))
+```
+
+## 80 - 20 de lo facturado
+```{r 80-20}
+ventasTotales <- sum(data$factura)
+data %>%
+  select(Cod, factura) %>%
+  group_by(Cod) %>%
+  summarise(ingresoServicio = sum(factura)) %>%
+  summarise(`%Utilidad` = (ingresoServicio * 100)/ventasTotales, Cod) %>%
+  arrange(desc(`%Utilidad`))
+```
+
+## Recorridos mas efectivos
+```{r}
+data %>%
+  select(distancia, Cod) %>%
+  group_by(distancia, Cod) %>%
+  filter(distancia == "5-30" || distancia == "30-45") %>%
+  summarise(n = n()) %>%
+  arrange(desc(n))
+```
+
+# Incremento del 10%
+```{r incremento}
+
+```
