@@ -63,3 +63,8 @@
 - [Rmarkdown](https://github.com/katherineggs/dataWrangling/blob/main/Laboratorio7/lab7.md)
 - [Reporte](https://github.com/katherineggs/dataWrangling/blob/main/Laboratorio7/reporteLab7.pdf)
 - [Presentacion](https://github.com/katherineggs/dataWrangling/blob/main/Laboratorio7/lab7ppt.pdf)
+- 
+## Laboratorio 8 - Python
+- [Informe Escrito](https://github.com/katherineggs/dataWrangling/blob/main/Laboratorio8/lab8.docx)
+- [script](https://github.com/katherineggs/dataWrangling/blob/main/Laboratorio8/script.py)
+- [Instrucciones (no modificadas)](https://github.com/katherineggs/dataWrangling/blob/main/Laboratorio8/Laboratorio_8.docx)
