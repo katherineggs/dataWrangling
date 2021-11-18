@@ -3,7 +3,8 @@ import numpy
 import pandas
 import math
 from sklearn.linear_model import LinearRegression
-from sklearn.preprocessing import LabelEncoder
+from sklearn.preprocessing import LabelEncoder, MinMaxScaler, StandardScaler, MaxAbsScaler
+
 
 df = pandas.read_csv("titanic_MD.csv")
 dfRenewed = pandas.DataFrame()
@@ -17,6 +18,10 @@ dfRenewed["Cabina"] = df["Cabin"]
 
 le = LabelEncoder()
 linear = LinearRegression()
+mmScaler = MinMaxScaler()
+stdScaler = StandardScaler()
+maxScaler = MaxAbsScaler()
+
 dfNull = df.isna().sum()
 
 # Edad -- Imputacion del promedio
@@ -145,3 +150,90 @@ for i in comparador:
 #     i += 1
 
 
+# ---- NORMALIZACIÓN ----
+# print("\n--- NORMALIZACION ---") #(np.array(dfRenewed["Edad"]).reshape(-1,1))
+# Min Max Norm
+mmScalEdad = mmScaler.fit_transform(numpy.array(dfRenewed["Edad"]).reshape(-1,1))
+mmScalTarf = mmScaler.fit_transform(numpy.array(dfRenewed["Tarifa"]).reshape(-1,1))
+mmScaleAge = mmScaler.fit_transform(numpy.array(dfC["Age"]).reshape(-1,1))
+mmScaleFar = mmScaler.fit_transform(numpy.array(dfC["Fare"]).reshape(-1,1))
+mmMEdad = numpy.mean(mmScalEdad)
+mmMAge = numpy.mean(mmScaleAge)
+mmMTarif = numpy.mean(mmScalTarf)
+mmMFare = numpy.mean(mmScaleFar)
+
+# print("\n-- Promedio")
+# print("min max scaling")
+# print("MD Tarifa")
+# print(mmMTarif)
+# print("Original Fare")
+# print(mmMFare)
+# print("")
+
+# Z value
+zScalEdad = stdScaler.fit_transform(numpy.array(dfRenewed["Edad"]).reshape(-1,1))
+zScalTarf = stdScaler.fit_transform(numpy.array(dfRenewed["Tarifa"]).reshape(-1,1))
+zScaleAge = stdScaler.fit_transform(numpy.array(dfC["Age"]).reshape(-1,1))
+zScaleFar = stdScaler.fit_transform(numpy.array(dfC["Fare"]).reshape(-1,1))
+
+zMEdad = numpy.mean(zScalEdad)
+zMAge = numpy.mean(zScaleAge)
+zMTarif = numpy.mean(zScalTarf)
+zMFare = numpy.mean(zScaleFar)
+
+
+# print("\n-- Promedio")
+# print("Z value")
+# print("MD Tarifa")
+# print(zMTarif)
+# print("Original Fare")
+# print(zMFare)
+# print("")
+
+
+# maxScaler
+maxScalEdad = maxScaler.fit_transform(numpy.array(dfRenewed["Edad"]).reshape(-1,1))
+maxScalTarf = maxScaler.fit_transform(numpy.array(dfRenewed["Tarifa"]).reshape(-1,1))
+maxScaleAge = maxScaler.fit_transform(numpy.array(dfC["Age"]).reshape(-1,1))
+maxScaleFar = maxScaler.fit_transform(numpy.array(dfC["Fare"]).reshape(-1,1))
+
+maxAMEdad = numpy.mean(maxScalEdad)
+maxAMAge = numpy.mean(maxScaleAge)
+maxAMTarif = numpy.mean(maxScalTarf)
+maxAMFare = numpy.mean(maxScaleFar)
+
+
+# print("\n-- Promedio")
+# print("Max AbscScaler")
+# print("MD Tarifa")
+# print(maxAMTarif)
+# print("Original Fare")
+# print(maxAMFare)
+# print("")
+
+
+
+# print("\nMD - TARIFA_____")
+# print(type(mmScalEdad))
+# # print("\nOriginal - FARE_")
+# # print(maxScaleFar)
+# # print(mmScalTarf)
+# print(mmScaleFar)
+
+# Sobrevivio siendo Mujer o nino
+cond1 = dfRenewed["Sobrevivio?"] == 1
+cond2 = dfRenewed["Genero"] == "female"
+cond3 = dfRenewed["Genero"] != "female"
+cond4 = dfRenewed["Edad"] < 18
+# print(dfRenewed.where(cond1).sum())
+print(dfRenewed.where(cond1 & cond2).sum()) # Mujer
+print(dfRenewed.where(cond3 & cond4).sum()) # nino
+
+# tarifa y clase
+meanTarifa = dfRenewed["Tarifa"].mean()
+cond1 = dfRenewed["Tarifa"] >= meanTarifa
+dfnew = dfRenewed.where(cond1)
+dfnew = dfnew.dropna()
+print("\n\nPromedio tarifas", meanTarifa)
+print(dfnew)
+print(dfnew["Clase"].unique())
